@@ -120,21 +120,22 @@ function PortalCard({
 
   return (
     <div
-      className="group relative overflow-hidden rounded-[20px] border border-border bg-white transition-all duration-300 hover:-translate-y-1"
+      className="group relative flex h-full flex-col overflow-hidden rounded-[20px] border border-border bg-white transition-all duration-300 hover:-translate-y-1"
       style={{
         boxShadow:
           "0 1px 0 rgba(13,15,26,0.04), 0 16px 40px -16px rgba(13,15,26,0.10)",
       }}
     >
-      {/* Mock area */}
+      {/* Mock area - vaste hoogte + gecentreerd zodat alle drie de kaarten
+          synchroon lopen (titels op één lijn) */}
       <div
-        className="relative overflow-hidden p-5"
+        className="relative flex items-center justify-center overflow-hidden p-5"
         style={{
           background:
             color === "orange"
               ? "linear-gradient(180deg, #FFF6F0 0%, #FFFFFF 100%)"
               : "linear-gradient(180deg, #EFF4FC 0%, #FFFFFF 100%)",
-          minHeight: "240px",
+          height: "320px",
         }}
       >
         {mock}
@@ -144,7 +145,7 @@ function PortalCard({
       <div className="h-px bg-border" />
 
       {/* Content */}
-      <div className="p-6 md:p-7">
+      <div className="flex flex-1 flex-col p-6 md:p-7">
         <div className="flex items-center justify-between">
           <span
             className="inline-flex items-center gap-2 rounded-full px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em]"
@@ -198,7 +199,7 @@ function PortalCard({
    ════════════════════════════════════════════════════════ */
 function DesktopMock() {
   return (
-    <div className="relative h-full">
+    <div className="relative w-full">
       {/* Browser-style mini frame */}
       <div className="rounded-lg bg-white shadow-[0_10px_30px_-10px_rgba(13,15,26,0.18)]">
         <div className="flex items-center gap-1.5 border-b border-border px-3 py-1.5">
@@ -287,7 +288,7 @@ function DesktopMock() {
    ════════════════════════════════════════════════════════ */
 function MobileMock() {
   return (
-    <div className="relative flex h-full items-center justify-center">
+    <div className="relative flex items-center justify-center">
       <div
         className="relative w-[200px] rounded-[28px] bg-ink p-2"
         style={{
@@ -374,7 +375,7 @@ function StepRow({
    ════════════════════════════════════════════════════════ */
 function QRMock() {
   return (
-    <div className="relative flex h-full items-center justify-center gap-3">
+    <div className="relative flex items-center justify-center gap-3">
       {/* QR Sticker */}
       <div
         className="relative w-[120px] rounded-[14px] bg-brand-orange p-2.5"
