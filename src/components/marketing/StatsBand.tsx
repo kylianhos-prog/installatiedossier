@@ -5,29 +5,29 @@ const stats = [
   {
     icon: Users,
     label: "Actieve installateurs",
-    value: "340+",
-    delta: "+18 deze maand",
+    value: "10",
+    delta: "de eerste aan boord",
     accent: "blue" as const,
   },
   {
     icon: ScanLine,
-    label: "QR-scans per maand",
-    value: "187K",
-    delta: "+18 % vs vorig",
+    label: "QR-scans deze maand",
+    value: "242",
+    delta: "en groeiend",
     accent: "blue" as const,
   },
   {
     icon: TrendingUp,
     label: "Live dossiers",
-    value: "2.240",
-    delta: "+12 % vs vorig",
+    value: "400",
+    delta: "en groeiend",
     accent: "blue" as const,
   },
   {
     icon: Shield,
-    label: "Uptime · 12 maanden",
-    value: "99,99 %",
-    delta: "ISO 27001",
+    label: "Uptime",
+    value: "99,9 %",
+    delta: "data in Nederland",
     accent: "green" as const,
   },
 ] as const;
@@ -127,7 +127,7 @@ export default function StatsBand() {
                   className="mt-3 font-mono text-[10px] font-bold uppercase tracking-[0.16em]"
                   style={{ color: accentClr }}
                 >
-                  <span className="text-current">↑</span>{" "}
+                  <span className="text-current">·</span>{" "}
                   <span className="text-white/72">{s.delta}</span>
                 </div>
               </div>
