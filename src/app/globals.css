@@ -1,0 +1,446 @@
+@import "tailwindcss";
+
+/* ════════════════════════════════════════════════════════
+   DESIGN TOKENS  ·  Tailwind v4 @theme directive
+   Brand: Installatiedossier - blue + orange + cream + ink
+   Reference: instadocu-master/src/app/globals.css
+   ════════════════════════════════════════════════════════ */
+@theme {
+  /* Brand colors */
+  --color-brand-blue: #2A5CBA;
+  --color-brand-blue-dk: #1A3E8C;
+  --color-brand-blue-lt: #EBF0FA;
+  --color-brand-blue-xl: rgba(42, 92, 186, 0.08);
+  --color-brand-orange: #E8692C;
+  --color-brand-orange-dk: #C9541C;
+  --color-brand-orange-lt: #FFF0E8;
+
+  /* Surface */
+  --color-cream: #F7F4F0;
+  --color-cream-2: #EDE9E3;
+  --color-ink: #0D0F1A;
+  --color-ink-2: #131626;
+  --color-ink-3: #1C2035;
+
+  /* Text + lines */
+  --color-gray: #6B7280;
+  --color-gray-lt: #9CA3AF;
+  --color-border: #E5E7EB;
+
+  /* Type */
+  --font-sans: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Radii (matches existing - clean modern SaaS) */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 11px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-pill: 100px;
+}
+
+/* ════════════════════════════════════════════════════════
+   BASE  ·  inside @layer base so Tailwind utilities win
+   ════════════════════════════════════════════════════════ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   SELECTION + FOCUS
+   ════════════════════════════════════════════════════════ */
+::selection {
+  background: var(--color-brand-orange);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ════════════════════════════════════════════════════════
+   SCROLLBAR (subtle)
+   ════════════════════════════════════════════════════════ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(13, 15, 26, 0.15);
+  border-radius: 99px;
+  border: 2px solid var(--color-cream);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-brand-orange);
+}
+
+/* ════════════════════════════════════════════════════════
+   REVEAL on scroll (default visible - JS progressive enhancement)
+   `.js-reveal-ready` is added by RevealMount once mounted, which
+   then hides reveals and lets the IntersectionObserver fade them in.
+   No-JS fallback: everything is visible immediately.
+   ════════════════════════════════════════════════════════ */
+.reveal {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-reveal-ready .reveal:not(.in) {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+
+/* ── Staggered group reveal - children animate one-by-one ── */
+.reveal-group > * {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.js-reveal-ready .reveal-group:not(.in) > * {
+  opacity: 0;
+  transform: translateY(28px);
+}
+.reveal-group.in > *:nth-child(1) { transition-delay: 0.00s; }
+.reveal-group.in > *:nth-child(2) { transition-delay: 0.07s; }
+.reveal-group.in > *:nth-child(3) { transition-delay: 0.14s; }
+.reveal-group.in > *:nth-child(4) { transition-delay: 0.21s; }
+.reveal-group.in > *:nth-child(5) { transition-delay: 0.28s; }
+.reveal-group.in > *:nth-child(6) { transition-delay: 0.35s; }
+.reveal-group.in > * {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-group > * {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   PHONE QR-SCAN ANIMATIONS - Hero "live demo"
+   ════════════════════════════════════════════════════════ */
+
+/* Scan beam sweeps top-to-bottom across the QR */
+@keyframes scan-beam {
+  0% { top: 0%; opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+.anim-scan-beam {
+  animation: scan-beam 3.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+/* Status text - "Scannen..." (visible first half) */
+@keyframes status-a {
+  0%, 42% { opacity: 1; transform: translateY(0); }
+  50%, 92% { opacity: 0; transform: translateY(-4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.anim-status-a {
+  animation: status-a 6.4s ease-in-out infinite;
+}
+
+/* Status text - "Geopend ✓" (visible second half) */
+@keyframes status-b {
+  0%, 42% { opacity: 0; transform: translateY(4px); }
+  50%, 92% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(4px); }
+}
+.anim-status-b {
+  animation: status-b 6.4s ease-in-out infinite;
+}
+
+/* Subtle pulse on a small dot (heartbeat / live indicator) */
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+.anim-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Dashboard subtle ambient scan-line (very faint) */
+@keyframes ambient-scan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(2000%); opacity: 0; }
+}
+.anim-ambient-scan {
+  animation: ambient-scan 8s linear infinite;
+}
+
+/* Notification slide-in + dwell + slide-out cycle */
+@keyframes notif-cycle {
+  0%, 5% { opacity: 0; transform: translateY(20px); }
+  12%, 55% { opacity: 1; transform: translateY(0); }
+  62%, 100% { opacity: 0; transform: translateY(-10px); }
+}
+.anim-notif-cycle {
+  animation: notif-cycle 8s ease-in-out infinite;
+  animation-delay: 1.6s;
+}
+
+/* Signaal-dot loopt over de connector in "Hoe het werkt" */
+@keyframes flow-dot {
+  0% { left: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+.anim-flow-dot {
+  animation: flow-dot 3.6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+/* "Klik hier" hint - zacht heen-en-weer wippen richting de toggle */
+@keyframes hint-nudge {
+  0%, 100% { transform: translateX(0) rotate(-2deg); }
+  50% { transform: translateX(-7px) rotate(-2deg); }
+}
+.anim-hint-nudge {
+  animation: hint-nudge 1.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-scan-beam,
+  .anim-status-a,
+  .anim-status-b,
+  .anim-pulse-dot,
+  .anim-ambient-scan,
+  .anim-notif-cycle,
+  .anim-flow-dot,
+  .anim-hint-nudge {
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   TYPOGRAPHY HELPERS
+   ════════════════════════════════════════════════════════ */
+.text-balance { text-wrap: balance; }
+.text-pretty  { text-wrap: pretty; }
+
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Display H1 - voor hero. Compact zodat het hele hero op één viewport past. */
+.h-mass {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: clamp(34px, 4.4vw, 62px);
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  font-feature-settings: "ss01";
+}
+
+/* Sectie H2 - kleiner en rustig leesbaar. */
+.h-section {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: clamp(28px, 3.6vw, 48px);
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+}
+
+/* Subtle highlight stroke onder een woord (orange underline).
+   white-space: nowrap zorgt dat de markering binnen het woord blijft. */
+.hl-stroke {
+  display: inline-block;
+  white-space: nowrap;
+  background-image: linear-gradient(to top, var(--color-brand-orange) 0 0.16em, transparent 0.16em);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  padding: 0 0.06em;
+}
+
+/* ════════════════════════════════════════════════════════
+   GRADIENT MESH (Stripe-style)
+   Zacht meerlaagse mesh voor section achtergronden.
+   ════════════════════════════════════════════════════════ */
+.mesh-warm {
+  background:
+    radial-gradient(at 18% 12%, rgba(232,105,44,0.22) 0px, transparent 48%),
+    radial-gradient(at 82% 18%, rgba(42,92,186,0.18) 0px, transparent 50%),
+    radial-gradient(at 8% 88%, rgba(232,105,44,0.10) 0px, transparent 45%),
+    radial-gradient(at 92% 92%, rgba(42,92,186,0.08) 0px, transparent 50%),
+    linear-gradient(180deg, var(--color-cream) 0%, #FAF8F4 100%);
+}
+
+.mesh-dark {
+  background:
+    radial-gradient(at 12% 18%, rgba(232,105,44,0.16) 0px, transparent 45%),
+    radial-gradient(at 88% 82%, rgba(42,92,186,0.18) 0px, transparent 50%),
+    radial-gradient(at 50% 0%, rgba(232,105,44,0.08) 0px, transparent 40%),
+    linear-gradient(180deg, var(--color-ink) 0%, var(--color-ink-2) 100%);
+}
+
+/* ════════════════════════════════════════════════════════
+   GRAIN OVERLAY (subtiel - als ::after of separate div)
+   ════════════════════════════════════════════════════════ */
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='3' seed='4'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ════════════════════════════════════════════════════════
+   BLUEPRINT GRID - merk-signatuur (technisch tekening-gevoel)
+   Fijn raster + sterkere hoofdlijnen, zacht uitgefade naar boven.
+   Voor lichte secties. Content-wrapper moet `relative` zijn zodat
+   hij boven deze laag schildert.
+   ════════════════════════════════════════════════════════ */
+.blueprint::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(42, 92, 186, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(42, 92, 186, 0.045) 1px, transparent 1px),
+    linear-gradient(to right, rgba(42, 92, 186, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(42, 92, 186, 0.06) 1px, transparent 1px);
+  background-size:
+    38px 38px,
+    38px 38px,
+    190px 190px,
+    190px 190px;
+  -webkit-mask-image: radial-gradient(ellipse 88% 62% at 50% -4%, #000 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse 88% 62% at 50% -4%, #000 0%, transparent 70%);
+}
+
+/* Warme variant voor secties met cream achtergrond (oranje raster) */
+.blueprint-warm::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(13, 15, 26, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(13, 15, 26, 0.04) 1px, transparent 1px);
+  background-size: 38px 38px, 38px 38px;
+  -webkit-mask-image: radial-gradient(ellipse 86% 60% at 50% -4%, #000 0%, transparent 68%);
+  mask-image: radial-gradient(ellipse 86% 60% at 50% -4%, #000 0%, transparent 68%);
+}
+
+/* ════════════════════════════════════════════════════════
+   SPEC TICK - kleine hoek-markering (technische tekening)
+   ════════════════════════════════════════════════════════ */
+.spec-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* ════════════════════════════════════════════════════════
+   BROWSER FRAME - voor product mockups
+   ════════════════════════════════════════════════════════ */
+.browser-frame {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow:
+    0 1px 0 rgba(13,15,26,0.04),
+    0 30px 60px -20px rgba(13,15,26,0.20),
+    0 60px 120px -40px rgba(232,105,44,0.15);
+  overflow: hidden;
+}
+
+.browser-bar {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 14px;
+  background: linear-gradient(180deg, #FAFAF8 0%, #F2EFE9 100%);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.browser-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  display: inline-block;
+}
+
+/* ════════════════════════════════════════════════════════
+   TERMINAL / CODE BLOCK (Vercel-feel)
+   ════════════════════════════════════════════════════════ */
+.term {
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  background: var(--color-ink);
+  color: rgba(255,255,255,0.92);
+  padding: 18px 22px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  line-height: 1.7;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 30px 60px -20px rgba(13,15,26,0.45);
+}
+
+.term-line { display: flex; gap: 12px; }
+.term-mark { color: var(--color-brand-orange); flex-shrink: 0; }
+.term-key  { color: rgba(255,255,255,0.55); }
+.term-val  { color: #fff; }
+.term-ok   { color: #4ADE80; }
+.term-warn { color: #FBBF24; }
