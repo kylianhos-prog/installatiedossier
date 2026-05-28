@@ -19,10 +19,10 @@ export const metadata: Metadata = {
 };
 
 const facts = [
-  { label: "Opgericht", value: "2023" },
-  { label: "Installateurs", value: "340+" },
-  { label: "Landen", value: "NL · BE" },
-  { label: "Uptime", value: "99,99%" },
+  { label: "Opgericht", value: "2026" },
+  { label: "Thuisbasis", value: "Alkmaar" },
+  { label: "Voor", value: "NL · BE" },
+  { label: "Focus", value: "Installateurs" },
 ];
 
 const values = [
@@ -50,24 +50,19 @@ const values = [
 
 const timeline = [
   {
-    year: "2023",
-    title: "Opgericht in Alkmaar",
-    body: "Het eerste QR-dossier gaat live bij een lokaal installatiebedrijf.",
-  },
-  {
-    year: "2024",
-    title: "Wkb & SCIOS ingebouwd",
-    body: "Automatische Wkb-export en Scope 8 + 10 logboeken. De eerste 100 installateurs aan boord.",
-  },
-  {
-    year: "2025",
-    title: "White-label & België",
-    body: "Eigen subdomein en huisstijl per bedrijf. Uitbreiding naar de Belgische markt.",
-  },
-  {
     year: "2026",
-    title: "De norm",
-    body: "340+ actieve installatiebedrijven en ISO 27001-certificering.",
+    title: "Opgericht in Alkmaar",
+    body: "Gebouwd door en voor installateurs: één QR-code op de meterkast, het hele dossier erachter.",
+  },
+  {
+    year: "Nu",
+    title: "De eerste bedrijven aan boord",
+    body: "We onboarden onze eerste installatiebedrijven persoonlijk en bouwen verder op hun werkpraktijk.",
+  },
+  {
+    year: "Volgende",
+    title: "Samen verder",
+    body: "De roadmap bepalen we samen met onze early adopters - jouw wensen sturen wat we bouwen.",
   },
 ];
 

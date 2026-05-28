@@ -1,7 +1,6 @@
 import {
   ArrowRight,
   Play,
-  Star,
   Sparkles,
   CheckCircle2,
   QrCode,
@@ -103,42 +102,20 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Trust line */}
-          <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-white/8 pt-5">
-            <div className="flex -space-x-2">
-              {[
-                ["#2A5CBA", "MD"],
-                ["#E8692C", "SW"],
-                ["#0E8A4A", "DV"],
-                ["#1F2A44", "LB"],
-              ].map(([bg, l]) => (
-                <span
-                  key={l}
-                  className="flex h-8 w-8 items-center justify-center rounded-full text-[11px] font-bold text-white ring-2 ring-ink"
-                  style={{ background: bg }}
-                >
-                  {l}
-                </span>
-              ))}
-            </div>
-            <div className="leading-tight">
-              <div className="flex items-center gap-0.5">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star
-                    key={i}
-                    size={12}
-                    className="text-brand-orange"
-                    fill="currentColor"
+          {/* Trust line - eerlijke beloften, geen verzonnen reviews */}
+          <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-white/8 pt-5 text-[12.5px] font-medium text-white/70">
+            {["14 dagen gratis", "Geen creditcard", "Maandelijks opzegbaar"].map(
+              (t) => (
+                <span key={t} className="inline-flex items-center gap-1.5">
+                  <CheckCircle2
+                    size={14}
+                    className="text-[#34D399]"
+                    strokeWidth={2.4}
                   />
-                ))}
-                <span className="ml-2 text-[12.5px] font-bold text-white">
-                  4.9 / 5
+                  {t}
                 </span>
-              </div>
-              <div className="mt-0.5 text-[11.5px] text-white/55">
-                350+ reviews · 14 dagen gratis · geen creditcard
-              </div>
-            </div>
+              )
+            )}
           </div>
         </div>
 

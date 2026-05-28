@@ -13,7 +13,7 @@ const chapters = [
   { num: "02", id: "stats", label: "Live cijfers" },
   { num: "03", id: "features", label: "Functies" },
   { num: "04", id: "showcase", label: "Drie portalen" },
-  { num: "05", id: "testimonials", label: "In de praktijk" },
+  { num: "05", id: "testimonials", label: "Net begonnen" },
   { num: "06", id: "pricing", label: "Prijzen" },
   { num: "07", id: "faq", label: "Vraag & antwoord" },
 ];

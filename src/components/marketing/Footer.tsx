@@ -5,7 +5,6 @@ import {
   Linkedin,
   Instagram,
   Facebook,
-  Star,
   ShieldCheck,
   Lock,
   Globe,
@@ -115,24 +114,9 @@ export default function Footer() {
         {/* ── Trust strip ── */}
         <div className="flex flex-col items-start gap-4 border-b border-white/10 pb-8 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-            <span className="inline-flex items-center gap-2 text-[14px] font-bold">
-              <span className="flex items-center gap-0.5">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star
-                    key={i}
-                    size={14}
-                    className="text-brand-orange"
-                    fill="currentColor"
-                  />
-                ))}
-              </span>
-              4.9 / 5
-              <span className="font-normal text-white/55">· 187 reviews</span>
-            </span>
-            <span className="hidden h-4 w-px bg-white/15 md:block" />
             <span className="text-[14px] font-bold">
-              Vertrouwd door{" "}
-              <span className="text-brand-orange">340+</span> installateurs
+              Gebouwd voor installateurs in{" "}
+              <span className="text-brand-orange">NL &amp; BE</span>
             </span>
           </div>
 

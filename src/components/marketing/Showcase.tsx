@@ -206,7 +206,7 @@ function DesktopMock() {
           <span className="h-2 w-2 rounded-full bg-[#FEBC2E]" />
           <span className="h-2 w-2 rounded-full bg-[#28C840]" />
           <span className="ml-2 font-mono text-[9px] uppercase tracking-widest text-gray-lt">
-            engberts.installatiedossier.nl
+            jouwbedrijf.installatiedossier.nl
           </span>
         </div>
 
@@ -215,10 +215,10 @@ function DesktopMock() {
           <div className="bg-brand-blue p-2 text-white">
             <div className="mb-3 flex items-center gap-1.5">
               <span className="flex h-5 w-5 items-center justify-center rounded bg-white text-[9px] font-black text-brand-blue">
-                E
+                JB
               </span>
               <span className="text-[9px] font-black tracking-tight">
-                Engberts
+                Jouw bedrijf
               </span>
             </div>
             <div className="space-y-1">
@@ -237,15 +237,15 @@ function DesktopMock() {
               Dashboard
             </div>
             <div className="mt-1.5 text-[8px] text-gray">
-              Vandaag · 14 opleveringen · 187 scans
+              Beheer · 3 projecten · 11 documenten
             </div>
 
             {/* KPIs */}
             <div className="mt-2.5 grid grid-cols-3 gap-1">
               {[
-                ["128", "PROJ"],
-                ["2.4K", "DOCS"],
-                ["187K", "SCANS"],
+                ["3", "PROJ"],
+                ["11", "DOCS"],
+                ["3", "PORTAAL"],
               ].map(([v, l]) => (
                 <div
                   key={l}
@@ -447,7 +447,7 @@ function QRMock() {
         <div className="overflow-hidden rounded-[14px] bg-white">
           <div className="border-b border-border bg-cream/60 px-2 pb-1 pt-5">
             <div className="font-mono text-[6px] uppercase tracking-widest text-gray">
-              dossier.engberts.nl
+              dossier.jouwbedrijf.nl
             </div>
             <div className="mt-0.5 text-[9px] font-black text-ink">Westerstraat 14</div>
           </div>

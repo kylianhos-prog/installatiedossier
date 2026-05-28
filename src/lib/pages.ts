@@ -470,14 +470,13 @@ export const pages: PageContent[] = [
     tone: "orange",
     title: "Klantverhalen",
     intro:
-      "Hoe gebruiken installatiebedrijven Installatiedossier in de praktijk? Lees hoe collega's tijd besparen en hun oplevering professionaliseren.",
+      "We zijn net van start. Zodra onze eerste installatiebedrijven live zijn, delen we hier hun ervaringen - eerlijk en met naam en toestemming.",
     sections: [
       {
-        heading: "Uitgelicht",
+        heading: "Binnenkort",
         bullets: [
-          "Engberts Installatie - 62% minder administratietijd",
-          "Klimaattechniek De Boer - 18% meer service-omzet",
-          "Warmtepomp-specialist Veltman - in één uur opgezet",
+          "We zijn net gestart - de eerste klantverhalen volgen zodra onze early adopters live zijn.",
+          "Wil jij een van de eerste zijn? Plan een gesprek en we denken met je mee.",
         ],
       },
     ],

@@ -55,7 +55,7 @@ export default function StatsBand() {
               <span className="hl-stroke">De&nbsp;norm</span>.
             </>
           }
-          sub="Sinds 2023 vertrouwen installatiebedrijven in NL en BE op Installatiedossier. Geen pitch - gewoon cijfers."
+          sub="Installatiebedrijven in NL en BE bouwen hun dossier op met Installatiedossier. Geen pitch - gewoon cijfers."
         />
 
         {/* Stats grid */}
