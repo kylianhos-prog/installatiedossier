@@ -8,8 +8,7 @@ import {
   FileCheck2,
 } from "lucide-react";
 import { SectionEyebrowLeft } from "./SectionChrome";
-import BrowserFrame from "./BrowserFrame";
-import DashboardMock from "./DashboardMock";
+import HeroDashboardGlass from "./HeroDashboardGlass";
 
 export default function Hero() {
   return (
@@ -179,20 +178,8 @@ function DashboardMockup() {
         }}
       />
 
-      {/* Main panel - de echte beheerder-software in een browserframe */}
-      <BrowserFrame url="installatiedossier.nl/dashboard">
-        <DashboardMock />
-      </BrowserFrame>
-
-      {/* Zachte fade onderaan zodat het dashboard in de donkere hero opgaat (1 geheel) */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 rounded-b-[14px]"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(13,15,26,0) 0%, rgba(13,15,26,0.45) 100%)",
-        }}
-      />
+      {/* Hoofdpaneel - donker glas dashboard dat opgaat in de hero */}
+      <HeroDashboardGlass />
 
       {/* Secundaire klant-view - telefoon die het dossier scant */}
       <PhoneScanAnimation />
