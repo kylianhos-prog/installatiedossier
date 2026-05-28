@@ -93,11 +93,11 @@ export default function FAQ() {
 
             <a
               href="/faq"
-              className="group mt-6 inline-flex items-center gap-2 text-[14px] font-bold text-ink transition-colors hover:text-brand-orange"
+              className="group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-[14px] bg-brand-orange px-6 py-4 text-[15px] font-bold text-white shadow-[0_14px_36px_-8px_rgba(232,105,44,0.5)] transition-all hover:-translate-y-0.5 hover:bg-brand-orange-dk"
             >
               Bekijk alle veelgestelde vragen
               <ArrowRight
-                size={15}
+                size={16}
                 className="transition-transform group-hover:translate-x-0.5"
               />
             </a>
