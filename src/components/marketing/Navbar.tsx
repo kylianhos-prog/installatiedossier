@@ -44,7 +44,7 @@ export default function Navbar() {
             : "bg-white/40 backdrop-blur-md",
         ].join(" ")}
       >
-        <div className="mx-auto flex h-[68px] max-w-[1440px] items-center gap-10 px-5 md:px-12 lg:px-20">
+        <div className="mx-auto flex h-[84px] max-w-[1440px] items-center gap-10 px-5 md:px-12 lg:px-20">
           {/* Logo */}
           <Link href="/" className="flex flex-shrink-0 items-center gap-2.5">
             <Image
@@ -53,7 +53,7 @@ export default function Navbar() {
               width={220}
               height={48}
               priority
-              className="h-12 w-auto md:h-14"
+              className="h-14 w-auto md:h-16"
             />
           </Link>
 
